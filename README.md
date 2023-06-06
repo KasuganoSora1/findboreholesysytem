@@ -3,17 +3,17 @@
 1. [download mysql](https://mysql.com/download)
 2. install mysql (default settting)
 ## 1.2 nodejs
-1. [download nodejs]()
+1. [download nodejs](https://nodejs.org/en)
 2. install nodejs (default setting)
 ## 1.3 git
-1. [download git]()
+1. [download git](https://git-scm.com/)
 2. install git (default setting)
 
 # 2.install
 ## 2.1 clone findsystem code
 in cmd,use this command
 ```
-git clone https://
+git clone https://github.com/KasuganoSora1/findboreholesysytem.git
 ```
 ## 2.2 copy database
 in origin server,use this command
