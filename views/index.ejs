@@ -1,0 +1,113 @@
+<html>
+    <title>钻孔查找系统</title>
+    <body>
+        <!--
+        <div style="font-size:100px;text-align:center">
+            ERROR <br/>
+            错误<br/>
+            エラー<br/>
+            <img src="./images/QQ图片20220601091232.jpg">
+        </div>
+        -->
+        <div class="search_box">
+            <form method="GET">
+                <label>名称:</label><input id="name_input" name="name" type="text">
+                <label>X：</label><input id="x_input" name="x" type="text" oninput = "value=value.replace(/[^\d\.]/g,'')">
+                <label>Y：</label><input id="y_input" name="y" type="text" oninput = "value=value.replace(/[^\d\.]/g,'')">
+                <select name="dis" id="s_select">
+                    <option value="500">500m</option>
+                    <option value="1000">1000m</option>
+                    <option value="1500">1500m</option>
+                    <option value="2000">2000m</option>
+                    <option value="2500">2500m</option>
+                    <option value="3000">3000m</option>
+                </select>
+                <input type="submit" value="查询">
+            </form>
+        </div>
+        <div class="html_body" width="100%;">
+            <div class="table_div">
+                <table width="100%">
+                    <tr>
+                        <th>项目编号</th>
+                        <th>项目名称</th>
+                        <th>钻孔编号</th>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>距离</th>
+                    </tr>
+                    <% for(var i in boreholes){ %>
+                        <tr>
+                            <td><%=boreholes[i].project_index %></td>
+                            <td><%=boreholes[i].project_name %></td>
+                            <td><%=boreholes[i].borehole_index %></td>
+                            <td><%=boreholes[i].X %></td>
+                            <td><%=boreholes[i].Y %></td>
+                            <td><%= boreholes[i].dis.toFixed(2)%>m</td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+        <div class="information">
+            注意事项<br />
+            <strong>
+        
+                <span style="color: red;">1.如果找不到,可以尝试调换X、Y顺序继续查找。数据统计过程中部分钻孔X、Y反向</span><br />
+            </strong>
+            增加新功能
+            <br />
+            21年9月30日:<br/>
+            1.查询范围可调节<br/>
+            2.钻孔根据从近到远排序<br/>
+            3.查询结束后，输入框会保留数据，方便输错后重新输入。
+            <br />
+            21年11月11日：<br />
+            1.添加2000年前钻孔
+        </div>
+        <div style="visibility:hidden;" id="x_div"><%= X%></div>
+        <div style="visibility: hidden;" id="y_div"><%= Y%></div>
+        <div style="visibility: hidden;" id="s_div"><%= s%></div>
+        <div style="visibility: hidden;" id="name_div"><%= name%></div>
+    </body>
+    <style type="text/css">
+        .search_box{
+            text-align: center;
+            padding: 20px;
+        }
+        .table_div {
+            margin:auto;
+            width:80%;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        .table_div table tr th {
+            border:solid 1px black;
+        }
+        .table_div table tr td {
+            border:solid 1px black;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        var x=document.getElementById("x_div").innerHTML;
+        var y=document.getElementById("y_div").innerHTML;
+        var s=document.getElementById("s_div").innerHTML;
+        window.onload=function(){
+            if(x!="undefined"){
+                document.getElementById("x_input").value=x;
+            }
+            if(y!="undefined"){
+                document.getElementById("y_input").value=y;
+            }
+            if(s!="undefined"){
+                document.getElementById("s_select").value=s;
+            }
+            if(name!="undefined"){
+                document.getElementById("name").value=s;
+            }
+        }
+
+    </script>
+</html>
